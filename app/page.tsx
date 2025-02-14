@@ -138,7 +138,7 @@ export default function ValentineProposal() {
             </motion.div>
             
             <h1 className="text-3xl font-bold text-gray-800 mb-4">
-              Leilani, will you be my Valentine?
+              Hiwiye, Mearey, will you be my Valentine?
             </h1>
             
             <p className="text-gray-600 mb-6">
@@ -179,7 +179,7 @@ export default function ValentineProposal() {
 
             {noCount > 5 && (
               <p className="mt-4 text-sm text-pink-600 italic">
-                Come on, Leilani! My heart is waiting... 💖
+                Come on, Hiwiye! My heart is waiting... 💖
               </p>
             )}
           </>
