@@ -217,33 +217,6 @@ export default function ValentineProposal() {
           </motion.div>
         )}
       </motion.div>
-
-      {/* Floating Hearts Background */}
-      <div className="fixed inset-0 pointer-events-none z-[-1]">
-        {Array.from({ length: 30 }).map((_, i) => (
-          <motion.div
-            key={i}
-            initial={{ 
-              y: "100vh", 
-              x: Math.random() * window.innerWidth,
-              opacity: 0.5
-            }}
-            animate={{ 
-              y: "-100vh", 
-              x: Math.random() * window.innerWidth,
-              rotate: 360
-            }}
-            transition={{
-              duration: Math.random() * 10 + 5,
-              repeat: Infinity,
-              repeatType: "loop"
-            }}
-            className="absolute text-2xl"
-          >
-            {["💖", "💝", "💗", "💓"][Math.floor(Math.random() * 4)]}
-          </motion.div>
-        ))}
-      </div>
     </div>
   );
 }
