@@ -63,7 +63,7 @@ export default function ValentineProposal() {
   const getNoButtonText = () => {
     const phrases = [
       "No",
-      "Are you sure, Leilani?",
+      "Are you sure, Mearey?",
       "But we're perfect together! 🥺",
       "One more chance? 💕",
       "Think about it again! 💖",

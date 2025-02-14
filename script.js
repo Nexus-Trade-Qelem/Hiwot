@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const message = "Leilani, you make my heart skip a beat. Your smile brightens my day, and your love fills my life with joy. Will you be my Valentine? 💝";
+    const message = "Meareys, you make my heart skip a beat. Your smile brightens my day, and your love fills my life with joy. Will you be my Valentine? 💝";
     const typingText = document.querySelector('.typing-text');
     let charIndex = 0;
 
