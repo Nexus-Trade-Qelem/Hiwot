@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { 
-  Heart, HeartHandshake, Music2, Play, Pause, 
-  Quote, Book, Star, Sparkles, Camera, Gift, Check 
+import {
+  Heart, HeartHandshake, Music2, Play, Pause,
+  Quote, Book, Star, Sparkles, Camera, Gift, Check
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
@@ -11,174 +11,119 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import LoveLetter from "@/components/LoveLetter";
 
 // Enhanced Love Songs with More Details
 const LOVE_SONGS = [
-    {
-      title: "Perfect",
-      artist: "Ed Sheeran",
-      youtubeId: "2Vv-BfVoq4g",
-      description: "Our perfect love story...",
-      mood: "Romantic",
-      year: 2017,
-      specialMeaning: "Reminds me of the moment I knew you were the one"
-    },
-    {
-      title: "All of Me",
-      artist: "John Legend",
-      youtubeId: "450p7goxZqg",
-      description: "Every part of me loves every part of you...",
-      mood: "Passionate",
-      year: 2013,
-      specialMeaning: "How deeply I love every part of you"
-    },
-    {
-      title: "Can't Help Falling in Love",
-      artist: "Elvis Presley",
-      youtubeId: "vGJTaP6anOU",
-      description: "Wise men say, only fools rush in...",
-      mood: "Classic Romance",
-      year: 1961,
-      specialMeaning: "How I fell for you without hesitation"
-    },
-    {
-      title: "Thinking Out Loud",
-      artist: "Ed Sheeran",
-      youtubeId: "lp-EO5I3b44",
-      description: "I'm thinking 'bout how people fall in love...",
-      mood: "Tender",
-      year: 2014,
-      specialMeaning: "Our love that grows stronger with time"
-    },
-    {
-      title: "Just the Way You Are",
-      artist: "Bruno Mars",
-      youtubeId: "LjhCEhWiKXk",
-      description: "When I see your face, there's not a thing that I would change...",
-      mood: "Adoring",
-      year: 2010,
-      specialMeaning: "How beautiful you are, just as you are"
-    },
-    {
-      title: "Endless Love",
-      artist: "Lionel Richie & Diana Ross",
-      youtubeId: "Uu2GqhDqruk",
-      description: "Two hearts, two hearts that beat as one...",
-      mood: "Eternal Love",
-      year: 1981,
-      specialMeaning: "Our love that knows no boundaries"
-    },
-    {
-      title: "A Thousand Years",
-      artist: "Christina Perri",
-      youtubeId: "rtOvBOqyZzw",
-      description: "I have died every day waiting for you...",
-      mood: "Devotional",
-      year: 2011,
-      specialMeaning: "How I've waited for you my entire life"
-    },
-    {
-      title: "Love on the Brain",
-      artist: "Rihanna",
-      youtubeId: "HBxt_-EEgWY",
-      description: "And you got me like, oh, what you want from me...",
-      mood: "Intense",
-      year: 2016,
-      specialMeaning: "The passionate connection we share"
-    },
-    {
-      title: "Make You Feel My Love",
-      artist: "Adele",
-      youtubeId: "0put0_a--Ng",
-      description: "I'd go hungry, I'd go black and blue...",
-      mood: "Unconditional",
-      year: 2008,
-      specialMeaning: "My commitment to you, no matter what"
-    },
-    {
-      title: "I Don't Want to Miss a Thing",
-      artist: "Aerosmith",
-      youtubeId: "JkK8g6FMEXE",
-      description: "I could stay awake just to hear you breathing...",
-      mood: "Intense Love",
-      year: 1998,
-      specialMeaning: "How every moment with you is precious"
-    }
-  ];
+  {
+    title: "Perfect",
+    artist: "Ed Sheeran",
+    youtubeId: "2Vv-BfVoq4g",
+    description: "Our perfect love story...",
+    mood: "Romantic",
+    year: 2017,
+    specialMeaning: "Reminds me of the moment I knew you were the one"
+  },
+  {
+    title: "All of Me",
+    artist: "John Legend",
+    youtubeId: "450p7goxZqg",
+    description: "Every part of me loves every part of you...",
+    mood: "Passionate",
+    year: 2013,
+    specialMeaning: "How deeply I love every part of you"
+  },
+  {
+    title: "Can't Help Falling in Love",
+    artist: "Elvis Presley",
+    youtubeId: "vGJTaP6anOU",
+    description: "Wise men say, only fools rush in...",
+    mood: "Classic Romance",
+    year: 1961,
+    specialMeaning: "How I fell for you without hesitation"
+  },
+  {
+    title: "Thinking Out Loud",
+    artist: "Ed Sheeran",
+    youtubeId: "lp-EO5I3b44",
+    description: "I'm thinking 'bout how people fall in love...",
+    mood: "Tender",
+    year: 2014,
+    specialMeaning: "Our love that grows stronger with time"
+  },
+  {
+    title: "Just the Way You Are",
+    artist: "Bruno Mars",
+    youtubeId: "LjhCEhWiKXk",
+    description: "When I see your face, there's not a thing that I would change...",
+    mood: "Adoring",
+    year: 2010,
+    specialMeaning: "How beautiful you are, just as you are"
+  },
+  {
+    title: "Endless Love",
+    artist: "Lionel Richie & Diana Ross",
+    youtubeId: "Uu2GqhDqruk",
+    description: "Two hearts, two hearts that beat as one...",
+    mood: "Eternal Love",
+    year: 1981,
+    specialMeaning: "Our love that knows no boundaries"
+  },
+  {
+    title: "A Thousand Years",
+    artist: "Christina Perri",
+    youtubeId: "rtOvBOqyZzw",
+    description: "I have died every day waiting for you...",
+    mood: "Devotional",
+    year: 2011,
+    specialMeaning: "How I've waited for you my entire life"
+  },
+  {
+    title: "Love on the Brain",
+    artist: "Rihanna",
+    youtubeId: "HBxt_-EEgWY",
+    description: "And you got me like, oh, what you want from me...",
+    mood: "Intense",
+    year: 2016,
+    specialMeaning: "The passionate connection we share"
+  },
+  {
+    title: "Make You Feel My Love",
+    artist: "Adele",
+    youtubeId: "0put0_a--Ng",
+    description: "I'd go hungry, I'd go black and blue...",
+    mood: "Unconditional",
+    year: 2008,
+    specialMeaning: "My commitment to you, no matter what"
+  },
+  {
+    title: "I Don't Want to Miss a Thing",
+    artist: "Aerosmith",
+    youtubeId: "JkK8g6FMEXE",
+    description: "I could stay awake just to hear you breathing...",
+    mood: "Intense Love",
+    year: 1998,
+    specialMeaning: "How every moment with you is precious"
+  }
+];
 
 // Enhanced Love Memories
 const LOVE_MEMORIES = [
   {
     title: "First Meeting",
-    description: "The day our eyes first met...",
+    description: "The day our eyes first met..., The day I lay eyes on you",
     icon: "💫",
     date: "Special Day"
   },
   {
-    title: "First Date",
-    description: "A magical evening that changed everything...",
+    title: "Every Day",
+    description: "Every moment spent together..., Every moment with you",
     icon: "💖",
-    date: "Unforgettable Night"
+    date: "Unforgettable Memories"
   }
 ];
 
-// Enhanced Love Challenges with Personalized Questions
-const LOVE_CHALLENGES = [
-  {
-    title: "First Conversation",
-    description: "Recall our first magical talk",
-    points: 100,
-    icon: <Quote className="text-blue-500" />,
-    questions: [
-      {
-        question: "when was the first time we talked?",
-        correctAnswer: "August 13",
-        hint: "It was such a blessed day"
-      },
-      {
-        question: "What nickname did you first call me?",
-        correctAnswer: "Sencia",
-        hint: "The sweet name that made my heart melt"
-      }
-    ]
-  },
-  {
-    title: "First Date Memory",
-    description: "Relive our first romantic encounter",
-    points: 150,
-    icon: <Heart className="text-pink-500" />,
-    questions: [
-      {
-        question: "Where did we go on our first date?",
-        correctAnswer: "Century",
-        hint: "It was a place with a special atmosphere"
-      },
-      {
-        question: "What did we do during our first date?",
-        correctAnswer: "Movies",
-        hint: "We shared something deeply personal"
-      }
-    ]
-  },
-  {
-    title: "First Kiss Moment",
-    description: "Cherish our most intimate memory",
-    points: 200,
-    icon: <HeartHandshake className="text-red-500" />,
-    questions: [
-      {
-        question: "Where did our first kiss happen?",
-        correctAnswer: "Century",
-        hint: "It was a magical, romantic setting"
-      },
-      {
-        question: "What made that moment so special?",
-        correctAnswer: "First Kiss",
-        hint: "It was more than just a physical moment"
-      }
-    ]
-  }
-];
+
 
 export default function ValentinePage() {
   const [state, setState] = useState({
@@ -188,10 +133,10 @@ export default function ValentinePage() {
     activeChallenge: null as number | null,
     showSpecialSurprise: false,
     completedChallenges: [] as string[],
-    currentChallenge: null as { 
-      title: string, 
-      currentQuestionIndex: number, 
-      answers: string[] 
+    currentChallenge: null as {
+      title: string,
+      currentQuestionIndex: number,
+      answers: string[]
     } | null,
     surpriseGenerated: false,
     windowWidth: 0
@@ -234,7 +179,7 @@ export default function ValentinePage() {
     // Add event listener
     if (typeof window !== 'undefined') {
       window.addEventListener('resize', handleResize);
-      
+
       // Cleanup
       return () => window.removeEventListener('resize', handleResize);
     }
@@ -249,59 +194,6 @@ export default function ValentinePage() {
     }));
   }, []);
 
-  // Start Challenge
-  const startChallenge = (challenge: typeof LOVE_CHALLENGES[0]) => {
-    setState(prev => ({
-      ...prev,
-      currentChallenge: {
-        title: challenge.title,
-        currentQuestionIndex: 0,
-        answers: []
-      }
-    }));
-  };
-
-  // Handle Answer Submission
-  const submitAnswer = (answer: string) => {
-    if (!state.currentChallenge) return;
-
-    const currentChallenge = LOVE_CHALLENGES.find(
-      c => c.title === state.currentChallenge?.title
-    );
-
-    if (!currentChallenge) return;
-
-    const currentQuestion = currentChallenge.questions[
-      state.currentChallenge.currentQuestionIndex
-    ];
-
-    const isCorrect = answer.toLowerCase() === currentQuestion.correctAnswer.toLowerCase();
-
-    if (isCorrect) {
-      if (state.currentChallenge.currentQuestionIndex < currentChallenge.questions.length - 1) {
-        // Move to next question
-        setState(prev => ({
-          ...prev,
-          currentChallenge: {
-            ...prev.currentChallenge!,
-            currentQuestionIndex: prev.currentChallenge!.currentQuestionIndex + 1,
-            answers: [...prev.currentChallenge!.answers, answer]
-          }
-        }));
-      } else {
-        // Challenge completed
-        setState(prev => ({
-          ...prev,
-          completedChallenges: [...prev.completedChallenges, currentChallenge.title],
-          currentChallenge: null,
-          surpriseGenerated: true
-        }));
-      }
-    } else {
-      // Incorrect answer - show hint
-      alert(currentQuestion.hint);
-    }
-  };
 
   // Floating Hearts Animation
   const FloatingHearts = () => {
@@ -325,14 +217,14 @@ export default function ValentinePage() {
         {hearts.map((heart) => (
           <motion.div
             key={heart.id}
-            initial={{ 
-              y: "100vh", 
+            initial={{
+              y: "100vh",
               x: heart.x,
               opacity: 0.5,
               scale: Math.random() * 0.5 + 0.5
             }}
-            animate={{ 
-              y: "-100vh", 
+            animate={{
+              y: "-100vh",
               x: heart.x,
               rotate: 360,
               opacity: [0.5, 0.2, 0]
@@ -366,18 +258,19 @@ export default function ValentinePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-red-50 overflow-hidden relative">
       <FloatingHearts />
-      
+
       <div className="container mx-auto px-4 py-8 max-w-4xl relative z-10">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
           className="bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl p-8 md:p-12 border border-pink-100"
         >
+          <LoveLetter />
           {/* Love Playlist Section */}
           <section className="mb-12">
             <h2 className="text-3xl font-bold text-pink-600 mb-6 flex items-center">
-              <Music2 className="mr-4 text-red-500" /> Our Love Playlist
+              <Music2 className="mr-4 text-red-500" /> Our Playlist
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
               {LOVE_SONGS.map((song, index) => (
@@ -391,14 +284,14 @@ export default function ValentinePage() {
                       <h3 className="font-semibold text-xl">{song.title}</h3>
                       <p className="text-sm text-gray-600">{song.artist}</p>
                     </div>
-                    <Button 
-                      variant="outline" 
+                    <Button
+                      variant="outline"
                       size="icon"
                       onClick={() => handleSongPlay(index)}
                       className="text-pink-500 hover:bg-pink-100"
                     >
-                      {state.currentSong === index && state.isPlaying 
-                        ? <Pause /> 
+                      {state.currentSong === index && state.isPlaying
+                        ? <Pause />
                         : <Play />}
                     </Button>
                   </div>
@@ -414,7 +307,7 @@ export default function ValentinePage() {
           {/* Love Memories Section */}
           <section className="mb-12">
             <h2 className="text-3xl font-bold text-pink-600 mb-6 flex items-center">
-              <Book className="mr-4 text-purple-500" /> Our Love Story
+              <Book className="mr-4 text-purple-500" /> Our Memoriess
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
               {LOVE_MEMORIES.map((memory, index) => (
@@ -431,82 +324,13 @@ export default function ValentinePage() {
               ))}
             </div>
           </section>
-
-          {/* Love Challenges Section */}
-          <section className="mb-12">
-            <h2 className="text-3xl font-bold text-pink-600 mb-6 flex items-center">
-              <Star className="mr-4 text-yellow-500" /> Love Challenges
-            </h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              {LOVE_CHALLENGES.map((challenge, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ scale: 1.05 }}
-                  className={`bg-white rounded-xl p-6 shadow-md border ${
-                    state.completedChallenges.includes(challenge.title)
-                      ? 'border-green-300'
-                      : 'border-pink-100'
-                  }`}
-                >
-                  <div className="flex items-center mb-4">
-                    {challenge.icon}
-                    <h3 className="font-semibold text-xl ml-4">{challenge.title}</h3>
-                  </div>
-                  <p className="text-gray-600 mb-4">{challenge.description}</p>
-                  
-                  {state.completedChallenges.includes(challenge.title) ? (
-                    <div className="flex items-center text-green-600">
-                      <Check className="mr-2" />
-                      Challenge Completed!
-                    </div>
-                  ) : (
-                    <Button 
-                      onClick={() => startChallenge(challenge)}
-                      className="w-full bg-pink-500 hover:bg-pink-600"
-                    >
-                      Start Challenge
-                    </Button>
-                  )}
-                </motion.div>
-              ))}
-            </div>
-          </section>
-
-          {/* Challenge Modal */}
-          {state.currentChallenge && (
-            <Dialog open={!!state.currentChallenge}>
-              <DialogContent>
-                <div className="text-center">
-                  <h2 className="text-2xl font-bold text-pink-600 mb-4">
-                    {state.currentChallenge.title} Challenge
-                  </h2>
-                  <p className="text-gray-600 mb-6">
-                    {LOVE_CHALLENGES.find(c => c.title === state.currentChallenge?.title)?.questions[
-                      state.currentChallenge.currentQuestionIndex
-                    ].question}
-                  </p>
-                  <Input 
-                    placeholder="Your answer..."
-                    className="mb-4"
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter') {
-                        submitAnswer((e.target as HTMLInputElement).value);
-                        (e.target as HTMLInputElement).value = '';
-                      }
-                    }}
-                  />
-                </div>
-              </DialogContent>
-            </Dialog>
-          )}
-
           {/* Romantic Surprise Generator */}
           <section className="text-center">
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="inline-block"
             >
-              <Button 
+              <Button
                 variant="outline"
                 className="bg-pink-50 text-pink-600 hover:bg-pink-100 flex items-center"
                 onClick={handleGenerateSurprise}
@@ -530,7 +354,7 @@ export default function ValentinePage() {
                 <p className="text-sm text-pink-500 italic">
                   {currentSurprise.details}
                 </p>
-                <Button 
+                <Button
                   className="mt-4 bg-pink-500 hover:bg-pink-600"
                   onClick={() => {
                     // Optional: Add more interaction or copy to clipboard
