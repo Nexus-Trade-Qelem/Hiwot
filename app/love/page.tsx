@@ -14,23 +14,97 @@ import { Label } from "@/components/ui/label";
 
 // Enhanced Love Songs with More Details
 const LOVE_SONGS = [
-  {
-    title: "Perfect",
-    artist: "Ed Sheeran",
-    youtubeId: "2Vv-BfVoq4g",
-    description: "Our perfect love story...",
-    mood: "Romantic",
-    year: 2017
-  },
-  {
-    title: "All of Me",
-    artist: "John Legend",
-    youtubeId: "450p7goxZqg",
-    description: "Every part of me loves every part of you...",
-    mood: "Passionate",
-    year: 2013
-  }
-];
+    {
+      title: "Perfect",
+      artist: "Ed Sheeran",
+      youtubeId: "2Vv-BfVoq4g",
+      description: "Our perfect love story...",
+      mood: "Romantic",
+      year: 2017,
+      specialMeaning: "Reminds me of the moment I knew you were the one"
+    },
+    {
+      title: "All of Me",
+      artist: "John Legend",
+      youtubeId: "450p7goxZqg",
+      description: "Every part of me loves every part of you...",
+      mood: "Passionate",
+      year: 2013,
+      specialMeaning: "How deeply I love every part of you"
+    },
+    {
+      title: "Can't Help Falling in Love",
+      artist: "Elvis Presley",
+      youtubeId: "vGJTaP6anOU",
+      description: "Wise men say, only fools rush in...",
+      mood: "Classic Romance",
+      year: 1961,
+      specialMeaning: "How I fell for you without hesitation"
+    },
+    {
+      title: "Thinking Out Loud",
+      artist: "Ed Sheeran",
+      youtubeId: "lp-EO5I3b44",
+      description: "I'm thinking 'bout how people fall in love...",
+      mood: "Tender",
+      year: 2014,
+      specialMeaning: "Our love that grows stronger with time"
+    },
+    {
+      title: "Just the Way You Are",
+      artist: "Bruno Mars",
+      youtubeId: "LjhCEhWiKXk",
+      description: "When I see your face, there's not a thing that I would change...",
+      mood: "Adoring",
+      year: 2010,
+      specialMeaning: "How beautiful you are, just as you are"
+    },
+    {
+      title: "Endless Love",
+      artist: "Lionel Richie & Diana Ross",
+      youtubeId: "Uu2GqhDqruk",
+      description: "Two hearts, two hearts that beat as one...",
+      mood: "Eternal Love",
+      year: 1981,
+      specialMeaning: "Our love that knows no boundaries"
+    },
+    {
+      title: "A Thousand Years",
+      artist: "Christina Perri",
+      youtubeId: "rtOvBOqyZzw",
+      description: "I have died every day waiting for you...",
+      mood: "Devotional",
+      year: 2011,
+      specialMeaning: "How I've waited for you my entire life"
+    },
+    {
+      title: "Love on the Brain",
+      artist: "Rihanna",
+      youtubeId: "HBxt_-EEgWY",
+      description: "And you got me like, oh, what you want from me...",
+      mood: "Intense",
+      year: 2016,
+      specialMeaning: "The passionate connection we share"
+    },
+    {
+      title: "Make You Feel My Love",
+      artist: "Adele",
+      youtubeId: "0put0_a--Ng",
+      description: "I'd go hungry, I'd go black and blue...",
+      mood: "Unconditional",
+      year: 2008,
+      specialMeaning: "My commitment to you, no matter what"
+    },
+    {
+      title: "I Don't Want to Miss a Thing",
+      artist: "Aerosmith",
+      youtubeId: "JkK8g6FMEXE",
+      description: "I could stay awake just to hear you breathing...",
+      mood: "Intense Love",
+      year: 1998,
+      specialMeaning: "How every moment with you is precious"
+    }
+  ];
 
 // Enhanced Love Memories
 const LOVE_MEMORIES = [
